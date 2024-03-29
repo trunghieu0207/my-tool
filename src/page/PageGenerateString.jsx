@@ -69,46 +69,44 @@ export const PageGenerateString = () => {
 
     return (
         <>
-            <Flex style={{width: '100%'}} vertical align={"center"}>
-                <h2>Generate string</h2>
-                {contextHolder}
-                <Row gutter={16} style={{width: '100%'}}>
-                    <Flex style={{width: '100%'}} align={"right"} justify={"center"}>
-                        <Col span={18} style={{display: "flex", justifyContent: 'center', alignItems: 'center'}}>
-                            <Checkbox onChange={(e) => setIsCheckNumber(e.target.checked)}>Numbers</Checkbox>
-                            <Checkbox onChange={(e) => setIsCheckCharacter(e.target.checked)}>Characters</Checkbox>
-                            <Checkbox onChange={(e) => setIsCheckSpecialCharacter(e.target.checked)}>Special characters</Checkbox>
-                            <Checkbox onChange={(e) => setIsCheckUpperCase(e.target.checked)}>Upper case</Checkbox>
-                            <span>
-                            <Input
-                                placeholder="Length"
-                                onChange={(e) => setLength(e.target.value)}
-                            />
+            <h2>Generate string</h2>
+            {contextHolder}
+            <Row gutter={16} style={{width: '100%', flex: 1}}>
+                <Flex style={{width: '100%'}} align={"right"} justify={"center"}>
+                    <Col span={18} style={{display: "flex", justifyContent: 'center', alignItems: 'center'}}>
+                        <Checkbox onChange={(e) => setIsCheckNumber(e.target.checked)}>Numbers</Checkbox>
+                        <Checkbox onChange={(e) => setIsCheckCharacter(e.target.checked)}>Characters</Checkbox>
+                        <Checkbox onChange={(e) => setIsCheckSpecialCharacter(e.target.checked)}>Special characters</Checkbox>
+                        <Checkbox onChange={(e) => setIsCheckUpperCase(e.target.checked)}>Upper case</Checkbox>
+                        <span>
+                                <Input
+                                    placeholder="Length"
+                                    onChange={(e) => setLength(e.target.value)}
+                                />
+                            </span>
+                        <Button style={{marginLeft: '3px'}} onClick={() => generateString()}>Generate</Button>
+                    </Col>
+                </Flex>
+            </Row>
+            <Row gutter={16} style={{width: '100%'}}>
+                <Flex style={{width: '100%'}} align={"right"} justify={"center"}>
+                    <Col span={18} style={{display: "flex", justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+                        <h4>Output</h4>
+                        <span style={{marginBottom: '3px'}}>
                         </span>
-                            <Button style={{marginLeft: '3px'}} onClick={() => generateString()}>Generate</Button>
-                        </Col>
-                    </Flex>
-                </Row>
-                <Row gutter={16} style={{width: '100%'}}>
-                    <Flex style={{width: '100%'}} align={"right"} justify={"center"}>
-                        <Col span={18} style={{display: "flex", justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
-                            <h4>Output</h4>
-                            <span style={{marginBottom: '3px'}}>
-                        </span>
-                            <Alert
-                                description={result ? result : "The output will shown"}
-                                style={{maxWidth: '1000px'}}
-                                type="success"
-                                action={
-                                    <Button size="small" type="primary" onClick={() => handleCopy()}>
-                                        Copy
-                                    </Button>
-                                }
-                            />
-                        </Col>
-                    </Flex>
-                </Row>
-            </Flex>
+                        <Alert
+                            description={result ? result : "The output will shown"}
+                            style={{width: '100%'}}
+                            type="success"
+                            action={
+                                <Button size="small" type="primary" onClick={() => handleCopy()}>
+                                    Copy
+                                </Button>
+                            }
+                        />
+                    </Col>
+                </Flex>
+            </Row>
         </>
 
     )

@@ -1,12 +1,9 @@
 import {useEffect, useState} from 'react';
 import {
-    DesktopOutlined,
-    FileOutlined,
+    DesktopOutlined, FieldTimeOutlined,
     PieChartOutlined,
-    TeamOutlined,
-    UserOutlined,
 } from '@ant-design/icons';
-import {Layout, Menu, theme} from 'antd';
+import {Flex, Layout, Menu, theme} from 'antd';
 import {useLocation, useNavigate} from "react-router-dom";
 
 const {Header, Content, Footer, Sider} = Layout;
@@ -30,6 +27,7 @@ function getItem(
 const items = [
     getItem('Base64', '1', '/base64', <PieChartOutlined/>),
     getItem('Generate string', '2', '/random', <DesktopOutlined/>),
+    getItem('Convert timestamp', '3', '/time', <FieldTimeOutlined />),
 ];
 
 const Root = ({ children }) => {
@@ -67,9 +65,10 @@ const Root = ({ children }) => {
                 }}/>
             </Sider>
             <Layout>
-                <Header style={{padding: 0, background: colorBgContainer}}/>
                 <Content style={{margin: '0 16px'}}>
-                    {children}
+                    <Flex style={{width: '100%'}} vertical align="center">
+                        {children}
+                    </Flex>
                 </Content>
                 <Footer style={{textAlign: 'center'}}>
                     Ant Design ©{new Date().getFullYear()} Created by Ant UED
