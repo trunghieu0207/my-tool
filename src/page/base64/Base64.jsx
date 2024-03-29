@@ -67,8 +67,12 @@ export const Base64 = ({title, isRawToBase64}) => {
                         <Alert
                             description={result ? result : "The output will shown"}
                             type="success"
+                            action={
+                                <Button size="small" type="primary" onClick={() => handleCopy()}>
+                                    Copy
+                                </Button>
+                            }
                         />
-                        <Button style={{marginTop: '5px'}} onClick={() => handleCopy()}>Copy</Button>
                     </Col>
                 </Flex>
             </Row>

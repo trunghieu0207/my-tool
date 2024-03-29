@@ -1,6 +1,7 @@
 import {Alert, Button, Checkbox, Col, Flex, Input, message, Row} from "antd";
 import {useState} from "react";
 import {useCopyToClipboard} from "usehooks-ts";
+import {CopyOutlined} from "@ant-design/icons";
 
 const NUMBER = '0123456789';
 const CHARACTER = 'abcdefghijklmnopqrstuvwxyz';
@@ -8,11 +9,11 @@ const UPPER_CHARACTER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const SPECIAL_CHARACTER = '!@#$%^&*()_+';
 
 export const PageGenerateString = () => {
-    const [isCheckNumber, setIsCheckNumber] = useState(true);
+    const [isCheckNumber, setIsCheckNumber] = useState(false);
     const [isCheckCharacter, setIsCheckCharacter] = useState(false);
     const [isCheckSpecialCharacter, setIsCheckSpecialCharacter] = useState(false);
     const [isCheckUpperCase, setIsCheckUpperCase] = useState(false);
-    const [length, setLength] = useState(10);
+    const [length, setLength] = useState(0);
     const [result, setResult] = useState('');
     const [copiedText, copy] = useCopyToClipboard()
     const [messageApi, contextHolder] = message.useMessage();
@@ -93,12 +94,16 @@ export const PageGenerateString = () => {
                         <Col span={18} style={{display: "flex", justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
                             <h4>Output</h4>
                             <span style={{marginBottom: '3px'}}>
-                            <Button onClick={() => handleCopy()}>Copy</Button>
                         </span>
                             <Alert
                                 description={result ? result : "The output will shown"}
                                 style={{maxWidth: '1000px'}}
                                 type="success"
+                                action={
+                                    <Button size="small" type="primary" onClick={() => handleCopy()}>
+                                        Copy
+                                    </Button>
+                                }
                             />
                         </Col>
                     </Flex>
