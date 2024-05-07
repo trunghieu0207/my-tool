@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import {
     DesktopOutlined, FieldTimeOutlined,
     PieChartOutlined,
+    DiffOutlined
 } from '@ant-design/icons';
 import {Flex, Layout, Menu, theme} from 'antd';
 import {useLocation, useNavigate} from "react-router-dom";
@@ -28,6 +29,7 @@ const items = [
     getItem('Base64', '1', '/base64', <PieChartOutlined/>),
     getItem('Generate string', '2', '/random', <DesktopOutlined/>),
     getItem('Convert timestamp', '3', '/time', <FieldTimeOutlined />),
+    getItem('Compare text', '4', '/compare', <DiffOutlined />),
 ];
 
 const Root = ({ children }) => {
