@@ -1,17 +1,18 @@
 import {Alert, Button, Checkbox, Col, Flex, Input, message, Row} from "antd";
 import {useState} from "react";
 import {useCopyToClipboard} from "usehooks-ts";
-import {CopyOutlined} from "@ant-design/icons";
 
 const NUMBER = '0123456789';
 const CHARACTER = 'abcdefghijklmnopqrstuvwxyz';
 const UPPER_CHARACTER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const SPECIAL_CHARACTER = '!@#$%^&*()_+';
+const JP_CHARACTER = '康車ユオハフ証座ばは案歳ド内告ム基玄よさき状局ゆぱひめ月80路どでぼろ新潤笑ソ型平ン著政3卸呪娯れき。';
 
 export const PageGenerateString = () => {
     const [isCheckNumber, setIsCheckNumber] = useState(false);
     const [isCheckCharacter, setIsCheckCharacter] = useState(false);
     const [isCheckSpecialCharacter, setIsCheckSpecialCharacter] = useState(false);
+    const [isCheckJpCharacter, setIsCheckJpCharacter] = useState(false);
     const [isCheckUpperCase, setIsCheckUpperCase] = useState(false);
     const [length, setLength] = useState(0);
     const [result, setResult] = useState('');
@@ -37,6 +38,9 @@ export const PageGenerateString = () => {
             stringToGenerate += UPPER_CHARACTER;
         }
 
+        if (isCheckJpCharacter) {
+            stringToGenerate += JP_CHARACTER;
+        }
 
         let result = '';
         const charactersLength = stringToGenerate.length;
@@ -76,6 +80,7 @@ export const PageGenerateString = () => {
                     <Col span={18} style={{display: "flex", justifyContent: 'center', alignItems: 'center'}}>
                         <Checkbox onChange={(e) => setIsCheckNumber(e.target.checked)}>Numbers</Checkbox>
                         <Checkbox onChange={(e) => setIsCheckCharacter(e.target.checked)}>Characters</Checkbox>
+                        <Checkbox onChange={(e) => setIsCheckJpCharacter(e.target.checked)}>Japanese Characters</Checkbox>
                         <Checkbox onChange={(e) => setIsCheckSpecialCharacter(e.target.checked)}>Special characters</Checkbox>
                         <Checkbox onChange={(e) => setIsCheckUpperCase(e.target.checked)}>Upper case</Checkbox>
                         <span>
