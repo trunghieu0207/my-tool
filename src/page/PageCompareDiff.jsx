@@ -39,7 +39,7 @@ export const PageCompareDiff = () => {
                 </Row>
             </Flex>
             <Divider/>
-            <Flex style={{width: '100%'}} vertical align={"center"}>
+            <Flex style={{width: '70%'}} vertical align={"center"}>
                 <h2>Result</h2>
                 <Row gutter={16} style={{width: '100%'}}>
                     <DiffComponent text1={oldValue} text2={newValue} />
