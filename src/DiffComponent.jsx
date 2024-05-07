@@ -1,4 +1,3 @@
-
 import diff_match_patch from 'diff-match-patch';
 
 const DiffComponent = ({ text1, text2 }) => {
@@ -9,12 +8,14 @@ const DiffComponent = ({ text1, text2 }) => {
     const renderDiff = (diffs) => {
         return diffs.map((part, index) => {
             const [op, text] = part;
-            let style = {};
+            let style = {
+                whiteSpace: 'pre-wrap', // Giữ nguyên xuống dòng và khoảng trắng
+            };
 
             if (op === 1) {
-                style = { backgroundColor: '#e6ffe6' }; // Thêm vào, màu xanh nhạt
+                style = { ...style, backgroundColor: '#e6ffe6' }; // Thêm vào, màu xanh nhạt
             } else if (op === -1) {
-                style = { backgroundColor: '#ffe6e6', textDecoration: 'line-through' }; // Xóa bỏ, màu đỏ nhạt
+                style = { ...style, backgroundColor: '#ffe6e6', textDecoration: 'line-through' }; // Xóa bỏ, màu đỏ nhạt
             }
 
             return <span key={index} style={style}>{text}</span>;
